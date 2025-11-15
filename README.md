@@ -4,7 +4,7 @@
 
 Erik Felipe Viana Rocha
 
-Felipe Muniz Amorin
+Felipe Muniz Amorim 
 
 # Mini Blockchain em Python
 
