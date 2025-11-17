@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FakeCoin Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            background: #f7f7f7;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .nav {
+            margin-bottom: 1rem;
+        }
+        .nav a {
+            margin-right: 1rem;
+        }
+        .flash {
+            padding: 0.5rem 1rem;
+            margin-bottom: 1rem;
+            border-radius: 3px;
+        }
+        .flash.error {
+            background: #fdd;
+            border: 1px solid #f99;
+        }
+        .flash.success {
+            background: #dfd;
+            border: 1px solid #9f9;
+        }
+        label {
+            display: block;
+            margin: 0.5rem 0 0.2rem;
+        }
+        input {
+            width: 100%;
+            padding: 0.4rem;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 0.8rem;
+            padding: 0.5rem 1rem;
+        }
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="nav">
+        {% if session.username %}
+            Logged in as <strong>{{ session.username }}</strong> |
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('register') }}">Register</a>
+        {% endif %}
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

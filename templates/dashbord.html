@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Dashboard</h1>
+
+<h2>Hello, {{ username }}!</h2>
+
+<p>Your balance: <strong>{{ balance }}</strong> FakeCoins</p>
+
+<p>Total distributed in this node's view: <strong>{{ total_distributed }}</strong> /
+   <strong>{{ total_supply }}</strong> coins</p>
+
+<hr>
+
+<h3>Send Coins</h3>
+<form method="post">
+    <label for="to_user">Recipient username</label>
+    <input id="to_user" name="to_user" required>
+
+    <label for="amount">Amount (e.g. 1.23)</label>
+    <input id="amount" name="amount" required>
+
+    <button type="submit">Send</button>
+</form>
+{% endblock %}
